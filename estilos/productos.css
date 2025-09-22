@@ -1,0 +1,176 @@
+  /* Reset y estilo base */
+  * { box-sizing: border-box; }
+  body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 40px;
+      background: #f5f7fa;
+      color: #333;
+  }
+  h1, h2 {
+      text-align: center;
+      font-weight: 600;
+      color: #2c3e50;
+  }
+  .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      overflow: hidden;
+  }
+  /* Pestañas */
+  .tabs {
+      display: flex;
+      border-bottom: 2px solid #e1e4e8;
+      background: #ecf0f1;
+  }
+  .tab {
+      flex: 1;
+      padding: 15px 20px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      color: #7f8c8d;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+  }
+  .tab:hover { background-color: #dcdde1; }
+  .tab.active {
+      background-color: #ffffff;
+      color: #34495e;
+      border-bottom: 3px solid #2980b9;
+      font-weight: 700;
+  }
+  /* Contenido pestañas */
+  .tab-content {
+      padding: 30px 40px;
+      display: none;
+  }
+  .tab-content.active { display: block; }
+
+  /* Formulario */
+  form {
+      max-width: 100%;
+  }
+  label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #34495e;
+  }
+  input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1.8px solid #bdc3c7;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #2c3e50;
+      transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus, input[type="number"]:focus {
+      border-color: #2980b9;
+      outline: none;
+      box-shadow: 0 0 7px rgba(41, 128, 185, 0.5);
+      background-color: #f0f6fb;
+  }
+  button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 16px;
+      color: white;
+      background-color: #2980b9;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 5px 14px rgba(41, 128, 185, 0.5);
+      transition: background-color 0.3s ease;
+      width: 100%;
+  }
+  button:hover { background-color: #1f6391; }
+
+  /* Tabla mejorada */
+  table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #34495e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      background-color: #fff;
+  }
+
+  thead tr {
+      background-color: #2471A3;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+  }
+
+  thead th {
+      padding: 16px 20px;
+      text-align: center;
+  }
+
+  tbody tr {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+  }
+
+  tbody tr:hover {
+      background-color: #e6f2ff;
+  }
+
+  tbody td {
+      padding: 16px 20px;
+      text-align: center;
+      vertical-align: middle;
+      border-bottom: none;
+  }
+
+  /* Botones de acción en tabla */
+  .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+  }
+  .btn {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.15s ease;
+      font-size: 14px;
+      min-width: 90px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      color: white;
+      user-select: none;
+  }
+  .btn:focus {
+      outline: 2px solid #1B4F72;
+      outline-offset: 2px;
+  }
+  .btn-editar {
+      background-color: #27ae60;
+  }
+  .btn-editar:hover {
+      background-color: #1e8449;
+      transform: scale(1.07);
+      box-shadow: 0 6px 18px rgba(30, 132, 73, 0.45);
+  }
+  .btn-eliminar {
+      background-color: #c0392b;
+  }
+  .btn-eliminar:hover {
+      background-color: #922b21;
+      transform: scale(1.07);
+      box-shadow: 0 6px 18px rgba(146, 43, 33, 0.45);
+  }
