@@ -7,12 +7,19 @@ $correo = $_POST['email'];
 $usuario = $_POST['user'];
 $contrasena = $_POST['password'];
 
+if(isset($_POST['rol'])){
+  $rol = $_POST['rol'];
+}else{
+  $rol = 'user';
+}
+
+
 /* encriptamiento de contraseña
 $contrasena = hash('sha512', $contrasena);
 */
 
-$query = "INSERT INTO usuarios(nombre_completo, correo, usuario, contrasena)
-           VALUES ('$nombre_completo' , '$correo' , '$usuario' , '$contrasena')";
+$query = "INSERT INTO usuarios(nombre_completo, correo, usuario, contrasena, rol)
+           VALUES ('$nombre_completo' , '$correo' , '$usuario' , '$contrasena', '$rol')";
  
   //vereificar que el correo no se repita
   $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo = '$correo' ");

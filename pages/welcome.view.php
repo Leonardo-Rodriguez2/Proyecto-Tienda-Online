@@ -15,7 +15,7 @@
 ?>
 
     <?php
-        include("../layouts/header.nav.component/header.nav.component.php");
+        include_once('../layouts/header.nav.component/header.nav.component.php');
     ?>
 
     <section class="relative bg-gray-900 text-white min-h-screen flex items-center justify-center text-center p-8">

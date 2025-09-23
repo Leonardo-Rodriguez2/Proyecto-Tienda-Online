@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'conexion.php';
+include ("../php/conexion.php");
 
 $correo = $_POST['email'];
 $contrasena = $_POST['password'];

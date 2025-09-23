@@ -69,7 +69,7 @@
             </div>
 
             <div class="mt-6 text-center">
-                <a href="./bienvenida.view.php" for="toggle-form" class="text-indigo-600 font-medium hover:underline cursor-pointer">Volver</a>
+                <a href="./welcome.view.php" for="toggle-form" class="text-indigo-600 font-medium hover:underline cursor-pointer">Volver</a>
             </div>
 
         </div>
@@ -109,7 +109,7 @@
             </div>
 
             <div class="mt-6 text-center">
-                    <a href="./bienvenida.view.php" for="toggle-form" class="text-indigo-600 font-medium hover:underline cursor-pointer">Volver</a>
+                    <a href="welcome.view.php" for="toggle-form" class="text-indigo-600 font-medium hover:underline cursor-pointer">Volver</a>
             </div>
 
         </div>
