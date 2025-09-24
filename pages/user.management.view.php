@@ -28,16 +28,21 @@
             
             <form action="../php/register.user.service.php" method="POST" class="space-y-6">
 
-                <div>
-                    <label for="nombre_usuario" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
-                    <input type="text" id="nombre_usuario" name="name" required
-                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
+                <div class="flex gap-3">
+                    <label for="nombre_usuario" class="block text-sm font-medium text-gray-700">Nombre Completo
 
-                <div>
-                    <label for="nombre_usuario" class="block text-sm font-medium text-gray-700">Nombre de Usuario</label>
+                    <input type="text" id="nombre_usuario" name="name" required
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+
+                    </label>
+
+                    <label for="nombre_usuario" class="block text-sm font-medium text-gray-700">Nombre de Usuario
+
                     <input type="text" id="nombre_usuario" name="user" required
-                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+
+                    </label>
+
                 </div>
 
                 <div>
@@ -59,7 +64,7 @@
                         <option value="" disabled selected>Selecciona un rol</option>
                         <option value="admin">Administrador</option>
                         <option value="secretario">Secretario</option>
-                        <option value="user">Usuario</option>
+                        <option value="cliente">cliente</option>
                     </select>
                 </div>
 

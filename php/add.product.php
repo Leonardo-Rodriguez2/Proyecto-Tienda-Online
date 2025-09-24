@@ -1,40 +1,38 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-include 'conexion_kl.php';
+include 'conexion.php';
 
-$codigo = $_POST['codigo'] ?? '';
-$nombre = $_POST['nombre'] ?? '';
-$precio_venta = $_POST['precio_venta'] ?? 0;
-$precio_compra = $_POST['precio_compra'] ?? 0;
-$cantidad = $_POST['cantidad'] ?? 0;
+$nombre = $_POST['name_product'] ?? '';
+$precio = $_POST['price_product'] ?? 0;
+$cantidad = $_POST['amount_product'] ?? 0;
+$descripcion = $_POST['description_product'] ?? '';
 
-if (empty($codigo) || empty($nombre)) {
-    die("Código y Nombre son obligatorios.");
+$imgNameProduct = $_FILES['img_product']['name'] ?? '';
+$imgProduct = $_FILES['img_product']['tmp_name'] ?? '';
+
+$ruta = "../img/" . $imgNameProduct;
+$imagenGuardada = false;
+if (!empty($imgNameProduct) && !empty($imgProduct)) {
+	$imagenGuardada = move_uploaded_file($imgProduct, $ruta);
 }
 
-$codigo = $conexion->real_escape_string($codigo);
-$nombre = $conexion->real_escape_string($nombre);
-$precio_venta = floatval($precio_venta);
-$precio_compra = floatval($precio_compra);
-$cantidad = intval($cantidad);
+$codigo = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 4);
 
-$stmt = $conexion->prepare("INSERT INTO productos (codigo, nombre, precio_venta, precio_compra, cantidad) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("ssddi", $codigo, $nombre, $precio_venta, $precio_compra, $cantidad);
-
-if ($stmt->execute()) {
-    echo '
-    <script>
-        alert("Producto almacenado exitosamente");
-        window.location = "../casillas/lista_de_producto.php";
-    </script>
-    ';
+if ($imagenGuardada || empty($imgNameProduct)) {
+	$query = mysqli_query($conexion, "INSERT INTO productos (codigo, imagen, nombre, descripcion, precio, cantidad) VALUES ('$codigo', '$imgNameProduct', '$nombre', '$descripcion', '$precio', '$cantidad')");
+	if ($query) {
+        echo "
+            <script> alert('La producto se almaceno exitosamente') 
+            setTimeout(() => {
+             window.location.href = '../index.php';
+            }, 4000);
+            </script>
+            ";
+	} else {
+        header('location: ../index.php');
+	}
 } else {
-    echo "Error: " . $stmt->error;
+	echo "Error al subir la imagen.";
 }
 
-$stmt->close();
-$conexion->close();
 ?>

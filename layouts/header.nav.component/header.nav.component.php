@@ -52,10 +52,11 @@
             const authButtons = document.getElementById('auth-buttons');
 
             const links = {
-                user: [
+                cliente: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
                     { text: 'Productos', href: '../../Proyecto-Kleibel/pages/list.product.view.php' },
-                    { text: 'Nosotros', href: '#nosotros' }
+                    { text: 'Compras', href: '#nosotros' },
+                    { text: 'Perfil', href: '#nosotros' },
                 ],
                 admin: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
@@ -74,7 +75,6 @@
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
                     { text: 'Productos', href: '../../Proyecto-Kleibel/pages/list.product.view.php' },
                     { text: 'Nosotros', href: '#nosotros' },
-                    { text: 'Contacto', href: '#contacto' }
                 ]
             };
 

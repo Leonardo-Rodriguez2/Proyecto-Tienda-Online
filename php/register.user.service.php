@@ -10,7 +10,7 @@ $contrasena = $_POST['password'];
 if(isset($_POST['rol'])){
   $rol = $_POST['rol'];
 }else{
-  $rol = 'user';
+  $rol = 'cliente';
 }
 
 

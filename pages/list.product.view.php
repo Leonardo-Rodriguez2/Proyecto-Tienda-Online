@@ -1,6 +1,7 @@
 
     <?php
         include("../layouts/header.nav.component/header.nav.component.php");
+        include("../php/list.product.php");
     ?> 
 
 <div class="flex flex-col md:flex-row gap-8 p-2">
@@ -94,9 +95,28 @@
                 <div class="grid grid-cols-3 gap-6 w-full flex-groud">
                 
                 <?php
-                    foreach (range(1, 9) as $index) {
-                        include("../components/card.for.clothes.component/card.for.clothes.component.php");
+                include '../php/conexion.php';
+                $result = mysqli_query($conexion, "SELECT * FROM productos");
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">';
+                        if (!empty($row['imagen'])) {
+                            echo '<img src="../img/' . htmlspecialchars($row['imagen']) . '" class="w-full h-64 object-cover">';
+                        } else {
+                            echo '<div class="w-full h-64 flex items-center justify-center bg-gray-200 text-gray-400">Sin imagen</div>';
+                        }
+                        echo '<div class="p-6">';
+                        echo '<h3 class="font-semibold text-lg text-gray-800 mb-2">' . htmlspecialchars($row['nombre']) . '</h3>';
+                        echo '<div class="flex items-center justify-between mt-4">';
+                        echo '<span class="text-xl font-bold text-indigo-600">$' . $row['precio'] . '</span>';
+                        echo '<a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-700 transition duration-300">Añadir al Carrito</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
                     }
+                } else {
+                    echo '<div class="col-span-3 text-center text-gray-500">No se pudieron cargar los productos.</div>';
+                }
                 ?>
                     
                 </div>
