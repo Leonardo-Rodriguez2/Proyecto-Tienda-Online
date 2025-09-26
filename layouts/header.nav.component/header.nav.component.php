@@ -21,7 +21,7 @@
         .user-dropdown-menu {
             display: none;
         }
-        .user-dropdown:hover .user-dropdown-menu {
+        .user-dropdown.active .user-dropdown-menu {
             display: block;
         }
     </style>
@@ -55,21 +55,23 @@
                 cliente: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
                     { text: 'Productos', href: '../../Proyecto-Kleibel/pages/list.product.view.php' },
-                    { text: 'Compras', href: '#nosotros' },
-                    { text: 'Perfil', href: '#nosotros' },
+                    { text: 'Compras', href: '../../Proyecto-Kleibel/pages/user.purchases.view.php' },
+                    { text: 'Perfil', href: '../../Proyecto-Kleibel/pages/profile.user.view.php' },
                 ],
                 admin: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
                     { text: 'Productos', href: '../../Proyecto-Kleibel/pages/list.product.view.php' },
                     { text: 'Gestión de Productos', href: '../../Proyecto-Kleibel/pages/product.management.view.php' },
                     { text: 'Gestión de Facturas', href: 'gestion-facturas.php' },
-                    { text: 'Gestión de Usuarios', href: '../../Proyecto-Kleibel/pages/user.management.view.php' }
+                    { text: 'Gestión de Usuarios', href: '../../Proyecto-Kleibel/pages/user.management.view.php' },
+                    { text: 'Perfil', href: '../../Proyecto-Kleibel/pages/profile.user.view.php' },
                 ],
                 secretario: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
                     { text: 'Productos', href: '../../Proyecto-Kleibel/pages/list.product.view.php' },
                     { text: 'Gestión de Productos', href: '../../Proyecto-Kleibel/pages/product.management.view.php' },
-                    { text: 'Gestión de Facturas', href: 'gestion-facturas.php' }
+                    { text: 'Gestión de Facturas', href: 'gestion-facturas.php' },
+                    { text: 'Perfil', href: '../../Proyecto-Kleibel/pages/profile.user.view.php' },
                 ],
                 default: [
                     { text: 'Inicio', href: '../../Proyecto-Kleibel/pages/welcome.view.php' },
@@ -96,18 +98,31 @@
                     const dropdown = document.createElement('div');
                     dropdown.className = 'user-dropdown relative';
                     dropdown.innerHTML = `
-                        <label for="menu" class="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 font-medium cursor-pointer">
+                        <button type="button" id="user-menu-btn" class="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 font-medium cursor-pointer bg-transparent border-none focus:outline-none">
                             <i class="fas fa-user-circle text-2xl"></i>
                             <span>${name || 'Usuario'}</span>
-                        </label>
+                        </button>
                         <div id="menu" class="user-dropdown-menu absolute bg-white shadow-lg rounded-md mt-2 w-48 py-2 right-0 z-50">
-                            ${role === 'admin' || role === 'secretario' ? '<a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>' : ''}
                             <a href="../php/cerra_session.service.php" id="logout-btn" class="block px-4 py-2 text-red-500 hover:bg-gray-100">Cerrar Sesión</a>
                         </div>
                     `;
                     authButtons.appendChild(dropdown);
 
-                    document.getElementById('logout-btn').addEventListener('click', (e) => {
+                    // Mostrar/ocultar menú con click
+                    const menuBtn = dropdown.querySelector('#user-menu-btn');
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        dropdown.classList.toggle('active');
+                    });
+
+                    // Cerrar menú al hacer click fuera
+                    document.addEventListener('click', (e) => {
+                        if (!dropdown.contains(e.target)) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+
+                    dropdown.querySelector('#logout-btn').addEventListener('click', (e) => {
                         e.preventDefault();
                         localStorage.removeItem('rol');
                         localStorage.removeItem('name');
@@ -128,9 +143,9 @@
 
             // Lógica principal
             switch (userRole) {
-                case 'user':
-                    generateNavLinks(links.user);
-                    generateAuthButtons('user', userName);
+                case 'cliente':
+                    generateNavLinks(links.cliente);
+                    generateAuthButtons('cliente', userName);
                     break;
                 case 'admin':
                     generateNavLinks(links.admin);

@@ -109,7 +109,7 @@
                         echo '<h3 class="font-semibold text-lg text-gray-800 mb-2">' . htmlspecialchars($row['nombre']) . '</h3>';
                         echo '<div class="flex items-center justify-between mt-4">';
                         echo '<span class="text-xl font-bold text-indigo-600">$' . $row['precio'] . '</span>';
-                        echo '<a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-700 transition duration-300">Añadir al Carrito</a>';
+                        echo '<a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm hover:bg-indigo-700 transition duration-300">Ver detalles</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';

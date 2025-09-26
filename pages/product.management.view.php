@@ -11,7 +11,7 @@
         <div class="w-full bg-white max-w-xl rounded-lg shadow-xl p-6 md:p-8 mb-8">
             <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6">Agregar/Producto</h3>
             
-<form action="../php/add.product.php" method="POST" enctype="multipart/form-data" class="space-y-6">
+<form action="../php/add.product.service.php" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <div>
                     <label for="nombre_producto" class="block text-sm font-medium text-gray-700">Nombre del Producto</label>
                     <input type="text" id="nombre_producto" name="name_product" required
